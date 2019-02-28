@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
         ButterKnife.bind(this);
 
         textCreateAccount.setPaintFlags(textCreateAccount.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        loginPresenter.cekLogin(this);
     }
 
     @Override
@@ -63,6 +65,10 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
     @Override
     public void loginSuccess(String msg, LoginData loginData) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+        // Menyimpan data ke dalam Shared Preference
+        loginPresenter.saveDataUser(this, loginData);
+
         LoginData mLoginData = new LoginData();
         mLoginData.setId_user(loginData.getId_user());
         mLoginData.setAlamat(loginData.getAlamat());
@@ -94,6 +100,13 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
         edtPassword.setError(msg);
         edtPassword.setFocusable(true);
 
+    }
+
+    @Override
+    public void isLogin() {
+        // Berpindah halman apabila user sudah login
+        startActivity(new Intent(this,MainActivity.class));
+        finish();
     }
 
     @OnClick({R.id.button_login, R.id.text_create_account})

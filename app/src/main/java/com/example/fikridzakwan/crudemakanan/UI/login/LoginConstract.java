@@ -1,5 +1,7 @@
 package com.example.fikridzakwan.crudemakanan.UI.login;
 
+import android.content.Context;
+
 import com.example.fikridzakwan.crudemakanan.Model.LoginData;
 
 public interface LoginConstract {
@@ -10,8 +12,11 @@ public interface LoginConstract {
         void loginFailure(String msg);
         void usernameError(String msg);
         void passwordError(String msg);
+        void isLogin();
     }
     interface Presenter {
         void doLogin(String username, String password);
+        void saveDataUser(Context context, LoginData loginData);
+        void cekLogin(Context context);
     }
 }

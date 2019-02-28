@@ -1,9 +1,12 @@
 package com.example.fikridzakwan.crudemakanan.UI.login;
 
+import android.content.Context;
+
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiClient;
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiInterface;
 import com.example.fikridzakwan.crudemakanan.Model.LoginData;
 import com.example.fikridzakwan.crudemakanan.Model.LoginRespone;
+import com.example.fikridzakwan.crudemakanan.Utilts.SessionManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,6 +16,7 @@ public class LoginPresenter implements LoginConstract.Presenter {
 
     private final LoginConstract.View view;
     private ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+    private SessionManager mSessionManager;
 
     public LoginPresenter(LoginConstract.View view) {
         this.view = view;
@@ -59,5 +63,24 @@ public class LoginPresenter implements LoginConstract.Presenter {
                 view.loginFailure(t.getMessage());
             }
         });
+    }
+
+    @Override
+    public void saveDataUser(Context context, LoginData loginData) {
+        // Membuat object Session Manager
+        mSessionManager = new SessionManager(context);
+        // Mensave data ke Session Prefrence degan menggunakan metho dari class Session Manager
+        mSessionManager.createSesion(loginData);
+    }
+
+    @Override
+    public void cekLogin(Context context) {
+        mSessionManager = new SessionManager(context);
+        Boolean isLogin = mSessionManager.isLogin();
+        // Mengecek apaka KEY_IS_LOGIN bernilai true
+        if (isLogin) {
+            // Menyuruh view untuk melakukan perpindahan ke MainActivity
+            view.isLogin();
+        }
     }
 }
