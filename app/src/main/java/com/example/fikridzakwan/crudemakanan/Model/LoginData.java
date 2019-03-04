@@ -31,9 +31,11 @@ public class LoginData implements Parcelable {
     @SerializedName("level")
     private String level;
 
+    // Buat contract kosong
     public LoginData() {
     }
 
+    // Hasil Implementasi Parcelable
     protected LoginData(Parcel in) {
         id_user = in.readString();
         nama_user = in.readString();
@@ -78,6 +80,7 @@ public class LoginData implements Parcelable {
         return CREATOR;
     }
 
+    // Getter and setter
     public String getId_user() {
         return id_user;
     }
