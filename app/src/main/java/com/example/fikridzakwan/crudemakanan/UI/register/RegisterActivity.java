@@ -39,8 +39,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     RadioButton rbAdmin;
     @BindView(R.id.rb_user)
     RadioButton rbUser;
-    @BindView(R.id.rbMapel)
-    RadioGroup rbMapel;
     @BindView(R.id.btn_register)
     Button btnRegister;
 
