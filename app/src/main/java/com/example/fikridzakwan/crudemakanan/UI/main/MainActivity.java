@@ -3,14 +3,26 @@ package com.example.fikridzakwan.crudemakanan.UI.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.fikridzakwan.crudemakanan.R;
+import com.example.fikridzakwan.crudemakanan.UI.Fragment.favorite.FavoriteFragment;
+import com.example.fikridzakwan.crudemakanan.UI.Fragment.home.HomeFragment;
+import com.example.fikridzakwan.crudemakanan.UI.Fragment.profile.ProfileFragment;
 
-public class MainActivity extends AppCompatActivity implements MainConstract.View{
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements MainConstract.View {
+
+    @BindView(R.id.fl_container)
+    FrameLayout flContainer;
 
     private TextView mTextMessage;
 
@@ -23,13 +35,16 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    HomeFragment homeFragment = new HomeFragment();
+                    loadFragment(homeFragment);
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_favorite:
+                    FavoriteFragment favoriteFragment = new FavoriteFragment();
+                    loadFragment(favoriteFragment);
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_profile:
+                    ProfileFragment profileFragment = new ProfileFragment();
+                    loadFragment(profileFragment);
                     return true;
             }
             return false;
@@ -40,10 +55,15 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        HomeFragment homeFragment = new HomeFragment();
+        loadFragment(homeFragment);
+        setTitle("Home");
     }
 
     @Override
@@ -55,13 +75,20 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_logout:
+//            case R.id.menu_logout:
                 // Melakukan perintah logout ke presenter
-                mainPresenter.logoutSesion(this);
+//                mainPresenter.logoutSesion(this);
                 // Menutup MainActivity
-                return true;
-                default:
+//                return true;
+            default:
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fl_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

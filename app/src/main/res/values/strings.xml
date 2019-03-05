@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Crude Makanan</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_profile">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="gender_male">Male</string>
+    <string name="gender_female" />
+
+    <style name="gender_female">Female</style>
 </resources>
