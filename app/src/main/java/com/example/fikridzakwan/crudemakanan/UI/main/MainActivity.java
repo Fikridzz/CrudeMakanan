@@ -76,11 +76,12 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
 //            case R.id.menu_logout:
-                // Melakukan perintah logout ke presenter
+//                // Melakukan perintah logout ke presenter
 //                mainPresenter.logoutSesion(this);
-                // Menutup MainActivity
+//                // Menutup MainActivity
+//                finish();
 //                return true;
-            default:
+//            default:
         }
         return super.onOptionsItemSelected(item);
     }

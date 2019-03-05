@@ -10,7 +10,7 @@ public interface ProfileContract {
     }
 
     interface Presenter {
-        void getData(Context context);
+        void getDataUser(Context context);
         void logoutSesion(Context context);
     }
 }

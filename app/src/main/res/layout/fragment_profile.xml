@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/account">
 
         <RelativeLayout
             android:id="@+id/layoutPicture"
@@ -40,7 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/cardview_default_elevation"
-            app:cardCornerRadius="0dp">
+            app:cardCornerRadius="0dp"
+            android:backgroundTint="@android:color/transparent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +51,7 @@
 
                 <TextView
                     android:text="Profil"
+                    android:textColor="#fff"
                     android:layout_marginLeft="3dp"
                     android:layout_marginBottom="10dp"
                     android:textSize="20sp"
@@ -58,45 +61,58 @@
                     android:layout_height="wrap_content" />
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#fff">
                     <EditText
                         android:id="@+id/edt_name"
                         android:hint="Name"
                         android:fontFamily="sans-serif-light"
                         android:inputType="textPersonName|textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#fff"
+                        android:backgroundTint="#fff"
+                        android:textColor="#fff"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#fff">
                     <EditText
                         android:id="@+id/edt_alamat"
+                        android:textColorHint="#fff"
+                        android:backgroundTint="#fff"
                         android:hint="Alamat"
                         android:fontFamily="sans-serif-light"
                         android:inputType="textPersonName|textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#fff">
                     <EditText
                         android:id="@+id/edt_no_telp"
                         android:hint="No telp"
+                        android:textColorHint="#fff"
+                        android:backgroundTint="#fff"
                         android:fontFamily="sans-serif-light"
                         android:inputType="textPersonName|textCapWords"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
                     android:text="Jenis Kelamin"
                     android:layout_marginLeft="4dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"/>
 
                 <Spinner
                     android:id="@+id/spin_gender"
@@ -119,7 +135,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/cardview_default_elevation"
-            app:cardCornerRadius="0dp">
+            app:cardCornerRadius="0dp"
+            android:backgroundTint="@android:color/transparent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

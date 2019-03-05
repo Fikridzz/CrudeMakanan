@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -80,14 +83,80 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         unbinder = ButterKnife.bind(this, view);
         // Menampilkan Option di fragment
         setHasOptionsMenu(true);
+
+        // Mensetting spinner
+        setpSpinner();
+
         // Merequest data yang di kerjakan oleh presenter
-        mProfilePresenter.getData(getContext());
+        mProfilePresenter.getDataUser(getContext());
         return view;
+    }
+
+    private void setpSpinner() {
+        // Membuat adapter spinner
+        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(getContext(), R.array.array_gender_option, android.R.layout.simple_spinner_item);
+        // Menampilkan spinner 1 line
+        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        // Memasukan adapter spinner ke dalam widget spinner kita
+        spinGender.setAdapter(genderSpinnerAdapter);
+        // Listterner spinner
+        spinGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Menganbil posisi item yang dipilih
+                String selection = (String) parent.getItemAtPosition(position);
+                // Mengecek posisi pakah ada isinya
+                if (!TextUtils.isEmpty(selection)) {
+                    // Mencek apakah 1 atau 2 yang dipilih user
+                    if (selection.equals(getString(R.string.gender_male)));
+                    mGender = GENDER_MALE;
+                } else if (selection.equals(getString(R.string.gender_female))) {
+                    mGender = GENDER_FEMALE;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
     @Override
     public void showDataUser(LoginData loginData) {
+        // Memasukan data yang sdah di ambil oleh presenter
+        idUser = loginData.getId_user();
+        nama = loginData.getNama_user();
+        alamat = loginData.getAlamat();
+        noTelp = loginData.getNo_telpl();
+        if (loginData.getJenkel().equals("L")) {
+            gender = 1;
+        } else {
+            gender = 2;
+        }
+        if (!TextUtils.isEmpty(idUser)) {
+            // Megubah widget agar tidak bisa di edit
+            readMode();
+            // Menset nama title action bar
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Profile" + nama);
 
+            // Menampilkan data ke layar
+            edtName.setText(nama);
+            edtAlamat.setText(alamat);
+            edtNoTelp.setText(noTelp);
+            // Mencek gender dan memiblih gender untuk ditampilkan pada spinner
+            switch (gender) {
+                case GENDER_MALE:
+                    spinGender.setSelection(0);
+                    break;
+                case GENDER_FEMALE:
+                    spinGender.setSelection(1);
+                    break;
+            }
+        } else {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Profile");
+        }
     }
 
     @Override
@@ -98,6 +167,10 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
 
     @OnClick(R.id.btn_logout)
     public void onViewClicked() {
+        // Melakukan perintah logout ke presenter
+        mProfilePresenter.logoutSesion(getContext());
+        // Menutup MainActivity
+        getActivity().finish();
     }
 
     @Override
@@ -115,6 +188,8 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
             case R.id.menu_edit:
 
                 edtMode();
+                action.findItem(R.id.menu_edit).setVisible(false);
+                action.findItem(R.id.menu_save).setVisible(true);
 
                 return true;
             case R.id.menu_save:
@@ -137,9 +212,13 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
 
                     } else {
                         readMode();
+                        action.findItem(R.id.menu_edit).setVisible(true);
+                        action.findItem(R.id.menu_save).setVisible(false);
                     }
                 } else {
                     readMode();
+                    action.findItem(R.id.menu_edit).setVisible(true);
+                    action.findItem(R.id.menu_save).setVisible(false);
                 }
 
                 return true;
@@ -161,8 +240,6 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         spinGender.setEnabled(false);
         fabChoosePic.setVisibility(View.INVISIBLE);
 
-        action.findItem(R.id.menu_edit).setVisible(true);
-        action.findItem(R.id.menu_save).setVisible(false);
     }
 
     @SuppressLint("RestrictedApi")

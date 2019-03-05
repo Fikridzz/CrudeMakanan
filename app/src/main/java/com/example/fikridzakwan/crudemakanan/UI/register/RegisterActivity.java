@@ -65,9 +65,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         }
 
         if (rbLakiLaki.isChecked()) {
-            jenkel = "Laki-laki";
+            jenkel = "L";
         } else {
-            jenkel = "Perempuan";
+            jenkel = "P";
         }
     }
 
@@ -104,10 +104,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rb_laki_laki:
-                jenkel = "Laki-laki";
+                jenkel = "L";
                 break;
             case R.id.rb_perempuan:
-                jenkel = "Perempuan";
+                jenkel = "P";
                 break;
             case R.id.rb_admin:
                 level = "1";
