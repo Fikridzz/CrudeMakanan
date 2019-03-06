@@ -20,7 +20,7 @@ public class LoginData implements Parcelable {
     private String jenkel;
 
     @SerializedName("no_telp")
-    private String no_telpl;
+    private String no_telp;
 
     @SerializedName("username")
     private String username;
@@ -41,7 +41,7 @@ public class LoginData implements Parcelable {
         nama_user = in.readString();
         alamat = in.readString();
         jenkel = in.readString();
-        no_telpl = in.readString();
+        no_telp = in.readString();
         username = in.readString();
         password = in.readString();
         level = in.readString();
@@ -70,7 +70,7 @@ public class LoginData implements Parcelable {
         dest.writeString(nama_user);
         dest.writeString(alamat);
         dest.writeString(jenkel);
-        dest.writeString(no_telpl);
+        dest.writeString(no_telp);
         dest.writeString(username);
         dest.writeString(password);
         dest.writeString(level);
@@ -114,11 +114,11 @@ public class LoginData implements Parcelable {
     }
 
     public String getNo_telpl() {
-        return no_telpl;
+        return no_telp;
     }
 
     public void setNo_telpl(String no_telpl) {
-        this.no_telpl = no_telpl;
+        this.no_telp = no_telpl;
     }
 
     public String getUsername() {

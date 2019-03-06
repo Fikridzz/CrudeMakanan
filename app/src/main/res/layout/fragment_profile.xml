@@ -121,9 +121,9 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="-3dp"
                     android:hint="Gender"
+                    android:backgroundTint="#fff"
                     android:fontFamily="sans-serif-light"
                     android:inputType="textPersonName" />
-
 
             </LinearLayout>
         </android.support.v7.widget.CardView>

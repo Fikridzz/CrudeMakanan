@@ -26,4 +26,13 @@ public interface ApiInterface {
      @Field("jenkel") String jenkel,
      @Field("notelp") String notelp,
      @Field("level") String level);
+
+    @FormUrlEncoded
+    @POST("updateuser.php")
+    Call<LoginRespone>  updateUser
+            (@Field("iduser") int iduser,
+             @Field("namauser") String namauser,
+             @Field("alamat") String alamat,
+             @Field("jenkel") String jenkel,
+             @Field("notelp") String notelp);
 }

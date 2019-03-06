@@ -3,6 +3,7 @@ package com.example.fikridzakwan.crudemakanan.UI.Fragment.profile;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.fikridzakwan.crudemakanan.Model.LoginData;
 import com.example.fikridzakwan.crudemakanan.R;
@@ -66,9 +69,10 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
     private int gender;
     private Menu action;
 
-    private int mGender = 0;
+    private String mGender;
     private static final int GENDER_MALE = 1;
     private static final int GENDER_FEMALE = 2;
+    private ProgressDialog progressDialog;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -85,14 +89,14 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         setHasOptionsMenu(true);
 
         // Mensetting spinner
-        setpSpinner();
+        setupSpinner();
 
         // Merequest data yang di kerjakan oleh presenter
         mProfilePresenter.getDataUser(getContext());
         return view;
     }
 
-    private void setpSpinner() {
+    private void setupSpinner() {
         // Membuat adapter spinner
         ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(getContext(), R.array.array_gender_option, android.R.layout.simple_spinner_item);
         // Menampilkan spinner 1 line
@@ -108,18 +112,44 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
                 // Mengecek posisi pakah ada isinya
                 if (!TextUtils.isEmpty(selection)) {
                     // Mencek apakah 1 atau 2 yang dipilih user
-                    if (selection.equals(getString(R.string.gender_male)));
-                    mGender = GENDER_MALE;
-                } else if (selection.equals(getString(R.string.gender_female))) {
-                    mGender = GENDER_FEMALE;
+                    if (selection.equals(getString(R.string.gender_male))) {
+                        mGender = "L";
+                    } else if (selection.equals(getString(R.string.gender_female))) {
+                        mGender = "P";
+                    }
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                mGender = "L";
 
             }
         });
+
+    }
+
+    @Override
+    public void showProgress() {
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setTitle("Get Data");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+    }
+
+    @Override
+    public void hideProgress() {
+        progressDialog.dismiss();
+
+    }
+
+    @Override
+    public void showSuccessUpdateUser(String msg) {
+        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        // Memgambil data ulang
+        mProfilePresenter.getDataUser(getContext());
 
     }
 
@@ -131,10 +161,13 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         alamat = loginData.getAlamat();
         noTelp = loginData.getNo_telpl();
         if (loginData.getJenkel().equals("L")) {
+            Log.i("cek gender", "masuk ke if L");
             gender = 1;
         } else {
             gender = 2;
         }
+
+        Log.i("cek jenkel", loginData.getJenkel());
         if (!TextUtils.isEmpty(idUser)) {
             // Megubah widget agar tidak bisa di edit
             readMode();
@@ -148,6 +181,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
             // Mencek gender dan memiblih gender untuk ditampilkan pada spinner
             switch (gender) {
                 case GENDER_MALE:
+                    Log.i("cek male", String.valueOf(gender));
                     spinGender.setSelection(0);
                     break;
                 case GENDER_FEMALE:
@@ -193,8 +227,8 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
 
                 return true;
             case R.id.menu_save:
-
-                if (TextUtils.isEmpty(idUser)) {
+                // Mencek apakah field kosong
+                if (!TextUtils.isEmpty(idUser)) {
                     if (TextUtils.isEmpty(edtName.getText().toString()) ||
                             TextUtils.isEmpty(edtAlamat.getText().toString()) ||
                             TextUtils.isEmpty(edtNoTelp.getText().toString())) {
@@ -211,6 +245,18 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
                         alertDialog.show();
 
                     } else {
+                        // Apabila user sudah mengisi semua field
+                        LoginData loginData = new LoginData();
+                        // Mengisi inputan user ke model logindata
+                        loginData.setId_user(idUser);
+                        loginData.setNama_user(edtName.getText().toString());
+                        loginData.setAlamat(edtAlamat.getText().toString());
+                        loginData.setNo_telpl(edtNoTelp.getText().toString());
+                        loginData.setJenkel(mGender);
+
+                        // Mengirim data ke presenter untuk di masukan ke dalam database
+                        mProfilePresenter.updateDataUser(getContext(), loginData);
+
                         readMode();
                         action.findItem(R.id.menu_edit).setVisible(true);
                         action.findItem(R.id.menu_save).setVisible(false);
