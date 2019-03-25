@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class ProfilePresenter implements ProfileContract.Presenter {
 
-    private SharedPreferences preferences;
+    private SharedPreferences   preferences;
     private final ProfileContract.View view;
     private ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 

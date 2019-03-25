@@ -1,5 +1,6 @@
 package com.example.fikridzakwan.crudemakanan.Data.remote;
 
+import com.example.fikridzakwan.crudemakanan.Model.DataItem;
 import com.example.fikridzakwan.crudemakanan.Model.LoginRespone;
 
 import retrofit2.Call;
