@@ -2,7 +2,7 @@ package com.example.fikridzakwan.crudemakanan.UI.Fragment.profile;
 
 import android.content.Context;
 
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
 
 public interface ProfileContract {
     interface View {

@@ -1,10 +1,8 @@
-package com.example.fikridzakwan.crudemakanan.Model;
+package com.example.fikridzakwan.crudemakanan.Model.Upload;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class LoginRespone {
+public class UploadResponse {
 
     @SerializedName("result")
     private int result;
@@ -12,8 +10,11 @@ public class LoginRespone {
     @SerializedName("message")
     private String message;
 
-    @SerializedName("data")
-    private LoginData data;
+    @SerializedName("url")
+    private String url;
+
+    @SerializedName("name")
+    private String name;
 
     public int getResult() {
         return result;
@@ -31,11 +32,19 @@ public class LoginRespone {
         this.message = message;
     }
 
-    public LoginData getData() {
-        return data;
+    public String getUrl() {
+        return url;
     }
 
-    public void setData(LoginData data) {
-        this.data = data;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

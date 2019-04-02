@@ -6,8 +6,8 @@ import android.util.Log;
 
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiClient;
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiInterface;
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
-import com.example.fikridzakwan.crudemakanan.Model.LoginRespone;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginRespone;
 import com.example.fikridzakwan.crudemakanan.Utilts.Constants;
 import com.example.fikridzakwan.crudemakanan.Utilts.SessionManager;
 

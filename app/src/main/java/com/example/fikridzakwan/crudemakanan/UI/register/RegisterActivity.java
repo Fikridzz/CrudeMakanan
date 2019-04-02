@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
 import com.example.fikridzakwan.crudemakanan.R;
 import com.example.fikridzakwan.crudemakanan.UI.login.LoginActivity;
 

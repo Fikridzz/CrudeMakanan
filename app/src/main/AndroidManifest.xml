@@ -3,6 +3,8 @@
     package="com.example.fikridzakwan.crudemakanan">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".UI.main.MainActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name" />
         <activity
             android:name=".UI.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -23,7 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.register.RegisterActivity"></activity>
+        <activity android:name=".UI.register.RegisterActivity" />
+        <activity android:name=".UI.uploadmakanan.UploadMakananActivity" />
+        <activity android:name=".UI.detailmakanan.DetailMakananActivity" />
+        <activity android:name=".UI.MakananByKategori.MakananByKategoriActivity" />
+        <activity android:name=".UI.DetailMakanan.DetailMakananActivity" />
+        <activity android:name=".UI.detailbyuser.DetailByUserActivity"></activity>
     </application>
 
 </manifest>

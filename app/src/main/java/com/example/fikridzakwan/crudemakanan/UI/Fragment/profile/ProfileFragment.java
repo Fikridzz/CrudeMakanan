@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
 import com.example.fikridzakwan.crudemakanan.R;
 
 import butterknife.BindView;
@@ -85,6 +86,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.View {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         unbinder = ButterKnife.bind(this, view);
+
         // Menampilkan Option di fragment
         setHasOptionsMenu(true);
 

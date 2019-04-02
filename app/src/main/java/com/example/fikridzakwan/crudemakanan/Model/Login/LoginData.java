@@ -1,4 +1,4 @@
-package com.example.fikridzakwan.crudemakanan.Model;
+package com.example.fikridzakwan.crudemakanan.Model.Login;
 
 import android.os.Parcel;
 import android.os.Parcelable;

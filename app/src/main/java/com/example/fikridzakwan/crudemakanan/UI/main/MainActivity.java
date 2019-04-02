@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.fikridzakwan.crudemakanan.R;
-import com.example.fikridzakwan.crudemakanan.UI.Fragment.favorite.FavoriteFragment;
+import com.example.fikridzakwan.crudemakanan.UI.Fragment.makananbyuser.MakananByUserFragment;
 import com.example.fikridzakwan.crudemakanan.UI.Fragment.home.HomeFragment;
 import com.example.fikridzakwan.crudemakanan.UI.Fragment.profile.ProfileFragment;
 
@@ -38,9 +38,10 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
                     HomeFragment homeFragment = new HomeFragment();
                     loadFragment(homeFragment);
                     return true;
-                case R.id.navigation_favorite:
-                    FavoriteFragment favoriteFragment = new FavoriteFragment();
-                    loadFragment(favoriteFragment);
+                case R.id.navigation_makanan:
+                    getSupportActionBar().setTitle("Kelola makanan");
+                    MakananByUserFragment makananByUserFragment = new MakananByUserFragment();
+                    loadFragment(makananByUserFragment);
                     return true;
                 case R.id.navigation_profile:
                     ProfileFragment profileFragment = new ProfileFragment();
@@ -70,20 +71,6 @@ public class MainActivity extends AppCompatActivity implements MainConstract.Vie
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-//            case R.id.menu_logout:
-//                // Melakukan perintah logout ke presenter
-//                mainPresenter.logoutSesion(this);
-//                // Menutup MainActivity
-//                finish();
-//                return true;
-//            default:
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void loadFragment(Fragment fragment) {

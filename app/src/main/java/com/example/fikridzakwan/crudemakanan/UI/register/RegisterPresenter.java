@@ -1,11 +1,9 @@
 package com.example.fikridzakwan.crudemakanan.UI.register;
 
-import android.telecom.Call;
-
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiClient;
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiInterface;
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
-import com.example.fikridzakwan.crudemakanan.Model.LoginRespone;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginRespone;
 
 import retrofit2.Callback;
 import retrofit2.Response;

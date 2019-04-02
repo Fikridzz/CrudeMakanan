@@ -1,6 +1,6 @@
 package com.example.fikridzakwan.crudemakanan.UI.register;
 
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
 
 public interface RegisterContract {
     interface View {

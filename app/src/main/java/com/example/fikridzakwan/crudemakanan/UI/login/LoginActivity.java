@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
 import com.example.fikridzakwan.crudemakanan.R;
 import com.example.fikridzakwan.crudemakanan.UI.main.MainActivity;
 import com.example.fikridzakwan.crudemakanan.UI.register.RegisterActivity;

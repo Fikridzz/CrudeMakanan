@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_favorite"
-        android:icon="@drawable/ic_favorite_border"
-        android:title="@string/title_favorite" />
+        android:id="@+id/navigation_makanan"
+        android:icon="@drawable/ic_cake"
+        android:title="@string/Makanan" />
 
     <item
         android:id="@+id/navigation_home"

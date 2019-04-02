@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiClient;
 import com.example.fikridzakwan.crudemakanan.Data.remote.ApiInterface;
-import com.example.fikridzakwan.crudemakanan.Model.LoginData;
-import com.example.fikridzakwan.crudemakanan.Model.LoginRespone;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
+import com.example.fikridzakwan.crudemakanan.Model.Login.LoginRespone;
 import com.example.fikridzakwan.crudemakanan.Utilts.SessionManager;
 
 import retrofit2.Call;

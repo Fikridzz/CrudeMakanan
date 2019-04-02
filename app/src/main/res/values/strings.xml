@@ -9,5 +9,6 @@
 
     <string name="gender_male">Male</string>
     <string name="gender_female">Female</string>
+    <string name="Makanan">Makanan</string>
 
 </resources>
