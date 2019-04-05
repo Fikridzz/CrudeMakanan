@@ -11,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomePresenter implements HomeConstract.Presenter{
+public class HomePresenter implements HomeConstract.Presenter {
 
     // TODO 1 Menyiapkan variable yang dibutuhkan
     private final HomeConstract.View view;

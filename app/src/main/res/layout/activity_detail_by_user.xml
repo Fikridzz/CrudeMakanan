@@ -28,7 +28,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="16dp">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_centerInParent="true"
                         android:id="@+id/img_picture"
                         android:layout_width="match_parent"
@@ -127,11 +127,19 @@
                     android:layout_margin="16dp">
 
                     <Button
-                        android:id="@+id/btn_save"
+                        android:id="@+id/btn_update"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Save"
+                        android:text="Update"
                         style="@style/Widget.AppCompat.Button.Colored"/>
+
+                    <Button
+                        android:id="@+id/btn_delete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Delete"
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
 
                 </LinearLayout>
 

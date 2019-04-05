@@ -45,7 +45,6 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     FloatingActionButton floatingActionButton;
 
     // TODO 1 Menyiapkan variable yang dibutuhkan
-    private ProgressDialog progressDialog;
     private HomePresenter mHomePresenter = new HomePresenter(this);
 
     public HomeFragment() {

@@ -113,4 +113,10 @@ public class MakananByUserFragment extends Fragment implements MakananByUserCons
         pbLoading.setVisibility(View.VISIBLE);
         txtInfo.setText(msg);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mMakananByUserPresenter.getListFoodByUser(idUser);
+    }
 }

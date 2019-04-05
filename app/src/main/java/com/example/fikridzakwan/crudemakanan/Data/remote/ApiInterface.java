@@ -8,6 +8,7 @@ import com.example.fikridzakwan.crudemakanan.Model.DetailMakanan.DetailMakananRe
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -66,8 +67,7 @@ public interface ApiInterface {
             @Part("namamakanan") RequestBody namaMakanan,
             @Part("descmakanan") RequestBody descMakanan,
             @Part("timeinsert") RequestBody timeinsert,
-            @Part MultipartBody.Part image
-            );
+            @Part MultipartBody.Part image);
 
     // Mengambil data detail makanan
     @GET("getdetailmakanan.php")
@@ -80,5 +80,23 @@ public interface ApiInterface {
     // Megambi data makanan bedasrakn iduser
     @GET("getmakananbyuser.php")
     Call<MakananResponse> getMakananByUser(@Query("iduser") int idUser);
+
+    @FormUrlEncoded
+    @POST("deletemakanan.php")
+    Call<MakananResponse> deleteMakanan(
+            @Field("idmakanan") int idMakanan,
+            @Field("fotomakanan") String namaFotoMakanan);
+
+    // Update makanan
+    @Multipart
+    @POST("updatemakanan.php")
+    Call<MakananResponse> updateMakanan (
+            @Part("idmakanan") int idMakanan,
+            @Part("idkategori") int idKategori,
+            @Part("namamakanan") RequestBody namaMakanan,
+            @Part("descmakanan") RequestBody descMakanan,
+            @Part("fotomakanan") RequestBody fotoMakanan,
+            @Part("inserttime") RequestBody insertTime,
+            @Part MultipartBody.Part image);
 
 }
