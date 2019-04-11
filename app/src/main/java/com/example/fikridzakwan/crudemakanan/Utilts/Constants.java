@@ -1,7 +1,7 @@
 package com.example.fikridzakwan.crudemakanan.Utilts;
 
 public class Constants {
-    public static final String BASE_URL = "http://192.168.70.3/makanan/";
+    public static final String BASE_URL = "http://192.168.70.93/makanan/";
     public static final String KEY_LOGIN = "KEY_LOGIN";
     public static final String KEY_IS_LOGIN = "KEY_IS_LOGIN";
     public static final int STORAGE_PERMISSION_CODE = 1;

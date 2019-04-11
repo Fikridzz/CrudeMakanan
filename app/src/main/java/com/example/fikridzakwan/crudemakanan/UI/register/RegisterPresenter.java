@@ -5,6 +5,7 @@ import com.example.fikridzakwan.crudemakanan.Data.remote.ApiInterface;
 import com.example.fikridzakwan.crudemakanan.Model.Login.LoginData;
 import com.example.fikridzakwan.crudemakanan.Model.Login.LoginRespone;
 
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
@@ -30,7 +31,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     !loginData.getLevel().isEmpty()) {
 
                 view.showProgress();
-                retrofit2.Call<LoginRespone> call = apiInterface.registerUser(
+                Call<LoginRespone> call = apiInterface.registerUser(
                         loginData.getUsername(),
                         loginData.getPassword(),
                         loginData.getNama_user(),

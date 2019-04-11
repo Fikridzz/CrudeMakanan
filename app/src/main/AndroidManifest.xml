@@ -27,7 +27,6 @@
         </activity>
         <activity android:name=".UI.register.RegisterActivity" />
         <activity android:name=".UI.uploadmakanan.UploadMakananActivity" />
-        <activity android:name=".UI.detailmakanan.DetailMakananActivity" />
         <activity android:name=".UI.MakananByKategori.MakananByKategoriActivity" />
         <activity android:name=".UI.DetailMakanan.DetailMakananActivity" />
         <activity android:name=".UI.detailbyuser.DetailByUserActivity"></activity>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
+<android.support.v4.widget.SwipeRefreshLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_refresh"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -67,14 +67,14 @@
                     android:layout_margin="16dp">
 
                     <TextView
-                        android:text="Upload Makanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginBottom="10dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:fontFamily="sans-serif-light"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="Upload Makanan"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"

@@ -118,7 +118,7 @@ public class DetailByUserPresenter implements DetailByUserConstract.Presenter {
             view.hideProgress();
             // Mengambil alamat file image
             File myFile = new File(filePath.getPath());
-            Uri selectedImage = getImageContenrUri(context,myFile, filePath);
+            Uri selectedImage = getImageContenrUri(context, myFile, filePath);
             String partImage = getPath(context, selectedImage);
             imageFile = new File(partImage);
         }

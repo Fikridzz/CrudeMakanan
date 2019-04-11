@@ -1,7 +1,6 @@
 package com.example.fikridzakwan.crudemakanan.UI.Fragment.home;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -31,7 +30,8 @@ import butterknife.Unbinder;
  */
 public class HomeFragment extends Fragment implements HomeConstract.View {
 
-
+    @BindView(R.id.floating_action_button)
+    FloatingActionButton floatingActionButton;
     @BindView(R.id.rv_makanan_news)
     RecyclerView rvMakananNews;
     @BindView(R.id.rv_makanan_populer)
@@ -41,8 +41,6 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
     Unbinder unbinder;
-    @BindView(R.id.floating_action_button)
-    FloatingActionButton floatingActionButton;
 
     // TODO 1 Menyiapkan variable yang dibutuhkan
     private HomePresenter mHomePresenter = new HomePresenter(this);

@@ -67,6 +67,7 @@ public class DetailByUserActivity extends AppCompatActivity implements DetailByU
     private String idKategori, idMakanan;
     private MakananData mMakananData;
     private String namaFotoMakanam;
+    private String[] mIdKategori;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,8 +123,17 @@ public class DetailByUserActivity extends AppCompatActivity implements DetailByU
         edtName.setText(makananData.getNamaMakanan());
         edtDesc.setText(makananData.getDescMakanan());
 
-        // Memilih spinner sesuai degan kategori makanan yang ada di dalama database
-        spinCategory.setSelection(Integer.valueOf(idKategori));
+        for (int i = 0;i < mIdKategori.length; i++) {
+
+            Log.i("cek", "isi loop select namakategori " + mIdKategori[i]);
+
+            if (Integer.valueOf(mIdKategori[i]).equals(Integer.valueOf(idKategori))) {
+                spinCategory.setSelection(i);
+                Log.i("cek", "isi dari i " + mIdKategori[i]);
+                Log.i("cek", "isi select mIdkategori " + mIdKategori[i]);
+                Log.i("cek", "isi select idKategori " + idKategori);
+            }
+        }
 
         RequestOptions options = new RequestOptions().error(R.drawable.ic_broken_image).placeholder(R.drawable.ic_broken_image);
         Glide.with(this).load(makananData.getUrlMakanan()).apply(options).into(imgPicture);
@@ -147,14 +157,19 @@ public class DetailByUserActivity extends AppCompatActivity implements DetailByU
     @Override
     public void showSpinnerKategori(final List<MakananData> kategoriDataList) {
         // Data penampung untuk  spinner
-        List<String> listSpinner = new ArrayList<>();
-        listSpinner.clear();
+        String [] namaKategori = new String[kategoriDataList.size()];
+        mIdKategori = new String[kategoriDataList.size()];
         for (int i = 0; i < kategoriDataList.size(); i++) {
-            listSpinner.add(kategoriDataList.get(i).getNamaKategori());
+
+            namaKategori[i] = kategoriDataList.get(i).getNamaKategori();
+            mIdKategori[i] = kategoriDataList.get(i).getIdKategori();
+
+            Log.i("cek", "isi show namakategori " + namaKategori[i]);
+            Log.i("cek", "isi show mIdkategori " + mIdKategori[i]);
         }
 
         // Membuat adapter spinner
-        ArrayAdapter<String> categorySpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listSpinner);
+        ArrayAdapter<String> categorySpinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, namaKategori);
         // Kita setting untuk menampilkan spinner degan 1 line
         categorySpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         // Memasukan adapter ke spinner

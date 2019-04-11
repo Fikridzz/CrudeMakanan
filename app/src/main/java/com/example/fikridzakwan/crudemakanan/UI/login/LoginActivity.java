@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
         loginPresenter.saveDataUser(this, loginData);
 
         LoginData mLoginData = new LoginData();
+
         mLoginData.setId_user(loginData.getId_user());
         mLoginData.setAlamat(loginData.getAlamat());
         mLoginData.setJenkel(loginData.getJenkel());
@@ -79,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
         mLoginData.setLevel(loginData.getLevel());
         mLoginData.setNo_telpl(loginData.getNo_telpl());
 
-        startActivity(new Intent(this, MainActivity.class).putExtra(Constants.KEY_LOGIN,mLoginData));
+        startActivity(new Intent(this, MainActivity.class).putExtra(Constants.KEY_LOGIN, mLoginData));
         finish();
     }
 
@@ -105,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements LoginConstract.V
     @Override
     public void isLogin() {
         // Berpindah halman apabila user sudah login
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
