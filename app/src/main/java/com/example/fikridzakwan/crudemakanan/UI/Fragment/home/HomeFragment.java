@@ -30,6 +30,7 @@ import butterknife.Unbinder;
  */
 public class HomeFragment extends Fragment implements HomeConstract.View {
 
+
     @BindView(R.id.floating_action_button)
     FloatingActionButton floatingActionButton;
     @BindView(R.id.rv_makanan_news)
@@ -41,7 +42,6 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
     Unbinder unbinder;
-
     // TODO 1 Menyiapkan variable yang dibutuhkan
     private HomePresenter mHomePresenter = new HomePresenter(this);
 
@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        unbinder = ButterKnife.bind(this, view);
+
 
         // TODO 2 Mengambil data foodnews, popular, dan kategori
         mHomePresenter.getListFoodNews();
@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
                 mHomePresenter.getListFoodPopular();
             }
         });
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -95,7 +96,6 @@ public class HomeFragment extends Fragment implements HomeConstract.View {
     public void showFoodPopulerList(List<MakananData> foodPopulerList) {
         rvMakananPopuler.setAdapter(new MakananAdapter(MakananAdapter.TYPE_2, getContext(), foodPopulerList));
         rvMakananPopuler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-
     }
 
     @Override

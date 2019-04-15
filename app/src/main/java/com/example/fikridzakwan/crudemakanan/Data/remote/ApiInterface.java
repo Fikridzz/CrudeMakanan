@@ -77,10 +77,11 @@ public interface ApiInterface {
     @GET("getmakananbykategori.php")
     Call<MakananResponse> getDetailMakananByKategori(@Query("idkategori") int idKategori);
 
-    // Megambi data makanan bedasrakn iduser
+    // Megambil data makanan bedasrakn iduser
     @GET("getmakananbyuser.php")
     Call<MakananResponse> getMakananByUser(@Query("iduser") int idUser);
 
+    // Delete motor
     @FormUrlEncoded
     @POST("deletemakanan.php")
     Call<MakananResponse> deleteMakanan(
